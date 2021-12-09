@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A6B1EF"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp_16">
+
+    <LinearLayout
+        android:id="@+id/llTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:text="返回"
+            android:textColor="#222222"
+            android:textSize="@dimen/dp_20" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvRefreshLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:text="刷新"
+            android:textColor="#FF2442"
+            android:textSize="@dimen/dp_20" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvClearLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:text="清除日志"
+            android:textColor="#FF2442"
+            android:textSize="@dimen/dp_20" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rlvContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/llTop"
+        android:background="#ffffff" />
+
+</RelativeLayout>

@@ -1,0 +1,3 @@
+include ':module1'
+include ':app', ':common'
+rootProject.name = "OkCommon"

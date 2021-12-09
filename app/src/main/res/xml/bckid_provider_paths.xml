@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--/storage/emulate/0-->
+    <external-path
+        name="bckid_out_download"
+        path="Download/" />
+
+    <!--/storage/emulate/0/Android/data/<包名>/cache-->
+    <external-cache-path
+        name="bckid_cache_download"
+        path="Download/" />
+
+    <!--/data/data/<包名>/cache-->
+    <cache-path
+        name="bckid_in_cache_download"
+        path="Download/" />
+
+</paths>
