@@ -33,12 +33,12 @@ public class MainActivity extends ComActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == vb.tv1) {
-            Router.with(this).url("ylt://app/MainActivity2?name=cxj")
-                    .forward();
+            Router.with(this).url("ylt://app/MainActivity2?name=cxj").forward();
         } else if (v == vb.tv2) {
-//            Router.with(this)
-//                    .url("ylt://module1/Mainmodle1Activity?name=cxj")
-//                    .forward();
+            Router.with(this)
+                    .hostAndPath("app/MainActivity3")
+                    .putString("name", "cxj")
+                    .forward();
 
             httpFun();
         }

@@ -115,125 +115,200 @@ public abstract class ComFragment extends Fragment implements View.OnClickListen
             getActivity().finish();
         }
     }
-    /*---------------------------获取页面传参----------------------------------*/
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // 配合新路由框架 页面传参方式 减少空异常，注意空
+    /////////////////////////////// /////////////////////////////////////////////////////////////////
 
     /**
-     * 页面传参 根据key获取string
+     * 获取Character
      *
      * @param key
      * @return
      */
-    public String getArgumentString(String key) {
-        return getArgumentString(key, "");
+    public Character getArgumentsChar(String key) {
+        return ParameterSupport.getChar(getArguments(), key);
     }
 
     /**
-     * 页面传参 根据key获取string
+     * 获取Character
      *
      * @param key
      * @param defaultValue
      * @return
      */
-    public String getArgumentString(String key, String defaultValue) {
+    public Character getArgumentsChar(String key, Character defaultValue) {
+        return ParameterSupport.getChar(getArguments(), key, defaultValue);
+    }
+
+    /**
+     * 获取string
+     *
+     * @param key
+     * @return
+     */
+    public String getArgumentsString(String key) {
+        return ParameterSupport.getString(getArguments(), key);
+    }
+
+    /**
+     * 获取string
+     *
+     * @param key
+     * @param defaultValue
+     * @return
+     */
+    public String getArgumentsString(String key, String defaultValue) {
         return ParameterSupport.getString(getArguments(), key, defaultValue);
     }
 
-    public Boolean getArgumentBoolean(String key) {
-        return getArgumentBoolean(key, false);
+    /**
+     * 获取基本类型Short
+     *
+     * @param key
+     * @return
+     */
+    public Short getArgumentsShort(String key) {
+        return ParameterSupport.getShort(getArguments(), key);
     }
 
     /**
-     * 获取页面传值 Boolean 类型
+     * 获取基本类型Short
      *
      * @param key
      * @param defaultValue
      * @return
      */
-    public Boolean getArgumentBoolean(String key, boolean defaultValue) {
-        return ParameterSupport.getBoolean(getArguments(), key, defaultValue);
-    }
-
-    public Integer getArgumentInt(String key) {
-        return getArgumentInt(key, -1);
+    public Short getArgumentsInt(String key, short defaultValue) {
+        return ParameterSupport.getShort(getArguments(), key, defaultValue);
     }
 
     /**
-     * 获取页面传值 int 类型
+     * 获取基本数据int
      *
      * @param key
-     * @param defaultValue
+     * @return 没有返回-1
+     */
+    public Integer getArgumentsInt(String key) {
+        return ParameterSupport.getInt(getArguments(), key);
+    }
+
+
+    /**
+     * 获取基本数据int
+     *
+     * @param key
+     * @param defaultValue 默认值
      * @return
      */
-    public Integer getArgumentInt(String key, int defaultValue) {
+    public Integer getArgumentsInt(String key, int defaultValue) {
         return ParameterSupport.getInt(getArguments(), key, defaultValue);
     }
 
-    public Long getArgumentLong(String key) {
-        return getArgumentLong(key, -1);
+    /**
+     * 获取长整型
+     *
+     * @param key
+     * @return
+     */
+    public Long getArgumentsLong(String key) {
+        return ParameterSupport.getLong(getArguments(), key);
     }
 
     /**
-     * 获取页面传值 Long 类型
+     * 获取长整型
      *
      * @param key
      * @param defaultValue
      * @return
      */
-    public Long getArgumentLong(String key, long defaultValue) {
+    public Long getArgumentsLong(String key, long defaultValue) {
         return ParameterSupport.getLong(getArguments(), key, defaultValue);
     }
 
-    public Float getArgumentFloat(String key) {
-        return getArgumentFloat(key, -1);
+    /**
+     * 获取单精度
+     *
+     * @param key
+     * @return
+     */
+    public Float getArgumentsFloat(String key) {
+        return ParameterSupport.getFloat(getArguments(), key);
     }
 
     /**
-     * 获取页面传值 float类型
+     * 获取单精度
      *
      * @param key
      * @param defaultValue
      * @return
      */
-    public Float getArgumentFloat(String key, float defaultValue) {
+    public Float getArgumentsFloat(String key, float defaultValue) {
         return ParameterSupport.getFloat(getArguments(), key, defaultValue);
     }
 
-    public Double getArgumentDouble(String key) {
-        return getArgumentDouble(key, -1);
+    /**
+     * 获取双精度
+     *
+     * @param key
+     * @return
+     */
+    public Double getArgumentsDouble(String key) {
+        return ParameterSupport.getDouble(getArguments(), key);
     }
 
     /**
-     * 获取页面传值 Double 类型
+     * 获取双精度
      *
      * @param key
      * @param defaultValue
      * @return
      */
-    public Double getArgumentDouble(String key, double defaultValue) {
+    public Double getArgumentsDouble(String key, double defaultValue) {
         return ParameterSupport.getDouble(getArguments(), key, defaultValue);
     }
 
     /**
-     * 获取页面传值 Parcelable 类型
+     * 获取boolean
+     *
+     * @param key
+     * @return
+     */
+    public Boolean getArgumentsBoolean(String key) {
+        return ParameterSupport.getBoolean(getArguments(), key);
+    }
+
+    /**
+     * 获取boolean
+     *
+     * @param key
+     * @param defaultValue
+     * @return
+     */
+    public Boolean getArgumentsBoolean(String key, boolean defaultValue) {
+        return ParameterSupport.getBoolean(getArguments(), key, defaultValue);
+    }
+
+    /**
+     * 获取序列化的对象
      *
      * @param key
      * @param <T>
      * @return
      */
-    public <T extends Parcelable> T getArgumentParcelable(String key) {
+    public <T extends Parcelable> T getArgumentsParcelable(String key) {
         return ParameterSupport.getParcelable(getArguments(), key);
     }
 
     /**
-     * 获取页面传值 ParcelableArrayList 类型
+     * 获取序列化的list
      *
      * @param key
      * @param <T>
      * @return
      */
-    public <T extends Parcelable> ArrayList<T> getArgumentParcelableArrayList(String key) {
+    public <T extends Parcelable> ArrayList<T> getArgumentsParcelableArrayList(String key) {
         return ParameterSupport.getParcelableArrayList(getArguments(), key);
     }
-
 
 }

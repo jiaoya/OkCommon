@@ -23,13 +23,17 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initRouter();
         Utils.init(this);
         new OaidUtils(this, null);
         LogUtils.getConfig().setLogSwitch(BuildConfig.DEBUG);
-        initRouter();
+
     }
 
 
+    /**
+     * 路由的初始化时间决定了 模块生命周期的加载时间
+     */
     private void initRouter() {
         // 初始化
         Component.init(BuildConfig.DEBUG,

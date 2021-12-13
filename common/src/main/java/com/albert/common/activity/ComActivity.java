@@ -132,9 +132,37 @@ public abstract class ComActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // 配合新路由框架 页面传参方式 减少空异常，注意空
+    /////////////////////////////// /////////////////////////////////////////////////////////////////
 
-    /*--------------------获取传递的值--------------------------------------*/
+    /**
+     * 获取Character
+     *
+     * @param key
+     * @return
+     */
+    public Character getCharExtra(String key) {
+        return ParameterSupport.getChar(getIntent(), key);
+    }
 
+    /**
+     * 获取Character
+     *
+     * @param key
+     * @param defaultValue
+     * @return
+     */
+    public Character getCharExtra(String key, Character defaultValue) {
+        return ParameterSupport.getChar(getIntent(), key, defaultValue);
+    }
+
+    /**
+     * 获取页面传参string值
+     *
+     * @param key
+     * @return
+     */
     public String getStringExtra(String key) {
         return getStringExtra(key, "");
     }
@@ -150,8 +178,14 @@ public abstract class ComActivity extends AppCompatActivity implements View.OnCl
         return ParameterSupport.getString(getIntent(), key, defaultValue);
     }
 
+    /**
+     * 获取页面传参 boolean
+     *
+     * @param key
+     * @return
+     */
     public Boolean getBooleanExtra(String key) {
-        return getBooleanExtra(key, false);
+        return ParameterSupport.getBoolean(getIntent(), key);
     }
 
     /**
@@ -165,8 +199,14 @@ public abstract class ComActivity extends AppCompatActivity implements View.OnCl
         return ParameterSupport.getBoolean(getIntent(), key, defaultValue);
     }
 
+    /**
+     * 获取页面传参Integer
+     *
+     * @param key
+     * @return
+     */
     public Integer getIntExtra(String key) {
-        return getIntExtra(key, -1);
+        return ParameterSupport.getInt(getIntent(), key);
     }
 
     /**
@@ -180,8 +220,14 @@ public abstract class ComActivity extends AppCompatActivity implements View.OnCl
         return ParameterSupport.getInt(getIntent(), key, defaultValue);
     }
 
+    /**
+     * 获取页面传参long
+     *
+     * @param key
+     * @return
+     */
     public Long getLongExtra(String key) {
-        return getLongExtra(key, -1);
+        return ParameterSupport.getLong(getIntent(), key);
     }
 
     /**
@@ -199,6 +245,16 @@ public abstract class ComActivity extends AppCompatActivity implements View.OnCl
      * 获取页面传参short
      *
      * @param key
+     * @return
+     */
+    public Short getShortExtra(String key) {
+        return ParameterSupport.getShort(getIntent(), key);
+    }
+
+    /**
+     * 获取页面传参short
+     *
+     * @param key
      * @param defaultValue
      * @return
      */
@@ -206,8 +262,14 @@ public abstract class ComActivity extends AppCompatActivity implements View.OnCl
         return ParameterSupport.getShort(getIntent(), key, defaultValue);
     }
 
+    /**
+     * 获取页面传参float
+     *
+     * @param key
+     * @return
+     */
     public Float getFloatExtra(String key) {
-        return getFloatExtra(key, -1);
+        return ParameterSupport.getFloat(getIntent(), key);
     }
 
     /**
@@ -221,8 +283,14 @@ public abstract class ComActivity extends AppCompatActivity implements View.OnCl
         return ParameterSupport.getFloat(getIntent(), key, defaultValue);
     }
 
+    /**
+     * 获取页面传参double
+     *
+     * @param key
+     * @return
+     */
     public Double getDoubleExtra(String key) {
-        return getDoubleExtra(key, -1);
+        return ParameterSupport.getDouble(getIntent(), key);
     }
 
     /**
