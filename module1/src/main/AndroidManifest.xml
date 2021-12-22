@@ -3,7 +3,9 @@
     package="com.ok.module1">
 
     <application>
-        <activity android:name=".MainModle1Activity"></activity>
+        <activity
+            android:name=".MainModle1Activity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

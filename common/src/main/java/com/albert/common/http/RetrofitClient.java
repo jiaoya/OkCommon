@@ -24,9 +24,9 @@ public class RetrofitClient {
      */
     private static RetrofitClient instance;
 
-    private Retrofit retrofit1;
-    private Retrofit retrofit2;
-    private Retrofit retrofit3;
+    private Retrofit retrofitDataWraper;
+    private Retrofit retrofitString;
+    private Retrofit retrofiObject;
 
     public static RetrofitClient getInstance() {
         if (instance == null) {
@@ -76,33 +76,50 @@ public class RetrofitClient {
 
 
     private Retrofit getRetrofit(@NonNull String baseUrl) {
-        if (retrofit1 == null) {
-            retrofit1 = new Retrofit.Builder()
+        if (retrofitDataWraper == null) {
+            retrofitDataWraper = new Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .client(HttpClient.INSTANCE.getOkHttpClient())
                     .addConverterFactory(DataWraper.getFactory())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
-        return retrofit1;
+        return retrofitDataWraper;
     }
 
+    /**
+     * 默认：code msg data 自定义DataWraper解析
+     *
+     * @param retrofitDataWraper
+     */
+    public void setRetrofitDataWraper(Retrofit retrofitDataWraper) {
+        this.retrofitDataWraper = retrofitDataWraper;
+    }
 
     private Retrofit getRetrofitString(@NonNull String baseUrl) {
-        if (retrofit2 == null) {
-            retrofit2 = new Retrofit.Builder()
+        if (retrofitString == null) {
+            retrofitString = new Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .client(HttpClient.INSTANCE.getOkHttpClient())
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
-        return retrofit2;
+        return retrofitString;
+    }
+
+    /**
+     * 使用ScalarsConverterFactory
+     *
+     * @param retrofitString
+     */
+    public void setRetrofitString(Retrofit retrofitString) {
+        this.retrofitString = retrofitString;
     }
 
     private Retrofit getRetrofitObject(@NonNull String baseUrl) {
-        if (retrofit3 == null) {
-            retrofit3 = new Retrofit.Builder()
+        if (retrofiObject == null) {
+            retrofiObject = new Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .client(HttpClient.INSTANCE.getOkHttpClient())
                     .addConverterFactory(GsonConverterFactory.create(GsonHelper.getInstance()))
@@ -110,7 +127,16 @@ public class RetrofitClient {
                     .build();
         }
         HttpClient.Builder builder = new HttpClient.Builder();
-        return retrofit3;
+        return retrofiObject;
+    }
+
+    /**
+     * GsonConverterFactory
+     *
+     * @param retrofiObject
+     */
+    public void setRetrofiObject(Retrofit retrofiObject) {
+        this.retrofiObject = retrofiObject;
     }
 
 }

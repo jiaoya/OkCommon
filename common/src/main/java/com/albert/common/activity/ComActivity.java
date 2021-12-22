@@ -137,6 +137,18 @@ public abstract class ComActivity extends AppCompatActivity implements View.OnCl
     /////////////////////////////// /////////////////////////////////////////////////////////////////
 
     /**
+     * 获取bundle
+     *
+     * @return
+     */
+    public Bundle getBundleExtra() {
+        if (getIntent() == null) {
+            return null;
+        }
+        return getIntent().getExtras();
+    }
+
+    /**
      * 获取Character
      *
      * @param key

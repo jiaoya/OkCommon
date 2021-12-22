@@ -1,6 +1,5 @@
 package com.albert.common.http;
 
-import com.albert.common.BuildConfig;
 import com.albert.common.http.cookie.PersistentCookieJar;
 import com.albert.common.http.cookie.PersistentCookieStore;
 import com.albert.okutils.Utils;

@@ -1,6 +1,5 @@
 package com.albert.common.http;
 
-import com.google.gson.Gson;
 import com.albert.common.gson.GsonHelper;
 
 import java.util.HashMap;
@@ -18,6 +17,7 @@ import okhttp3.RequestBody;
 public class RequestBodyUtils {
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    private static final MediaType JSON2 = MediaType.parse("application/x-www-form-urlencoded;charset=utf-8");
 
     public static RequestBodyBuilder newBuilder(Object key, Object value) {
         return new RequestBodyBuilder(key, value);
@@ -65,16 +65,43 @@ public class RequestBodyUtils {
         }
 
         public RequestBody build() {
-            return RequestBody.create(JSON, new Gson().toJson(hashMap));
+            return RequestBody.create(JSON, GsonHelper.getInstance().toJson(hashMap));
         }
+
+        /**
+         * form-urlencoded
+         *
+         * @return
+         */
+        public RequestBody build2() {
+            return RequestBody.create(JSON2, GsonHelper.getInstance().toJson(hashMap));
+        }
+
     }
 
     public static RequestBody create(String data) {
         return RequestBody.create(JSON, data);
     }
 
+    /**
+     * application/json
+     *
+     * @param data
+     * @return
+     */
     public static RequestBody create(Object data) {
         String jsonData = GsonHelper.getInstance().toJson(data);
         return RequestBody.create(JSON, jsonData);
+    }
+
+    /**
+     * form-urlencoded
+     *
+     * @param data
+     * @return
+     */
+    public static RequestBody create2(Object data) {
+        String jsonData = GsonHelper.getInstance().toJson(data);
+        return RequestBody.create(JSON2, jsonData);
     }
 }

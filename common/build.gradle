@@ -1,5 +1,6 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.library'
+}
 
 android {
 
@@ -9,27 +10,15 @@ android {
         viewBinding = true
     }
 
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0.0"
+        targetSdkVersion 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                // 配置业务模块的模块名称
-//                arguments += [
-//                        "HOST"    : project.getName(),
-//                        "Priority": "0", // 这个字符串内必须是数字类型的. 表示模块的优先级, 值越大, 越先加载
-//                ]
-//            }
-//        }
 
     }
 
@@ -38,12 +27,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-
-    // 项目启用 Java 8 语言功能和 Jack
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     repositories {
@@ -60,27 +43,26 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     api 'androidx.legacy:legacy-support-v4:1.0.0'
-    api 'androidx.appcompat:appcompat:1.3.1'
+    api 'androidx.appcompat:appcompat:1.4.0'
     api 'androidx.multidex:multidex:2.0.1'
     api 'androidx.constraintlayout:constraintlayout:2.1.2'
     api 'com.google.android.material:material:1.4.0'
     api 'androidx.recyclerview:recyclerview:1.2.1'
     api 'androidx.viewpager2:viewpager2:1.1.0-beta01'
     api 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    api 'net.grandcentrix.tray:tray:0.12.0'         // 跨进程 的sharePre
-    api "androidx.work:work-runtime:2.6.0"          // 性能最好的后台任务队列处理
+    api "androidx.work:work-runtime:2.7.1"          // 性能最好的后台任务队列处理
     api "android.arch.work:work-rxjava2:1.0.1"      // rxjava 版本
     api 'com.google.code.gson:gson:2.8.8'           // json
     api(name: 'oaid_sdk_1.0.25', ext: 'aar')        // 设备唯一id 需要在 asset目录添加 supplierconfig.json
     api(name: 'okutils-release', ext: 'aar')
 
     // room
-    api "androidx.room:room-runtime:2.3.0"
-    annotationProcessor "androidx.room:room-compiler:2.3.0"
+    api "androidx.room:room-runtime:2.4.0"
+    annotationProcessor "androidx.room:room-compiler:2.4.0"
     // optional - RxJava support for Room
-    api "androidx.room:room-rxjava2:2.3.0"
+    api "androidx.room:room-rxjava2:2.4.0"
     // optional - Test helpers
-    testImplementation "androidx.room:room-testing:2.3.0"
+    testImplementation "androidx.room:room-testing:2.4.0"
 
     // datastore
     api "androidx.datastore:datastore-preferences:1.0.0"
@@ -132,8 +114,8 @@ dependencies {
     api 'com.muddzdev:quickshot:1.3.0'
 
     // 路由
-    api 'com.github.xiaojinzi123.Component:component-impl:v1.9.2-androidx-java8'
-    api 'com.github.xiaojinzi123.Component:component-impl-rx:v1.9.2-androidx-java8'
+    api "com.github.xiaojinzi123.Component:component-impl:${router_version}"
+    api "com.github.xiaojinzi123.Component:component-impl-rx:${router_version}"
     //annotationProcessor "com.github.xiaojinzi123.Component:component-compiler:v1.9.2-androidx-java8"
 
 }
