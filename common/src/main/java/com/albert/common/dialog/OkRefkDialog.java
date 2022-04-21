@@ -6,7 +6,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.albert.common.dialog.weakproxy.WeakDialogListenerHelp;
+import com.albert.common.dialog.weakproxy.RefDialogListenerHelp;
 
 
 /**
@@ -17,33 +17,33 @@ import com.albert.common.dialog.weakproxy.WeakDialogListenerHelp;
  *      Desc         :
  * </pre>
  */
-class OkWeakDialog extends Dialog {
+class OkRefkDialog extends Dialog {
 
-    public OkWeakDialog(@NonNull Context context) {
+    public OkRefkDialog(@NonNull Context context) {
         super(context);
     }
 
-    public OkWeakDialog(@NonNull Context context, int themeResId) {
+    public OkRefkDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
     }
 
-    protected OkWeakDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+    protected OkRefkDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
     }
 
     @Override
     public void setOnCancelListener(@Nullable OnCancelListener listener) {
-        super.setOnCancelListener(WeakDialogListenerHelp.proxy(listener));
+        super.setOnCancelListener(RefDialogListenerHelp.proxy(listener));
     }
 
     @Override
     public void setOnDismissListener(@Nullable OnDismissListener listener) {
-        super.setOnDismissListener(WeakDialogListenerHelp.proxy(listener));
+        super.setOnDismissListener(RefDialogListenerHelp.proxy(listener));
     }
 
     @Override
     public void setOnShowListener(@Nullable OnShowListener listener) {
-        super.setOnShowListener(WeakDialogListenerHelp.proxy(listener));
+        super.setOnShowListener(RefDialogListenerHelp.proxy(listener));
     }
 
 }

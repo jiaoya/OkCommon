@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.paging.PagingDataAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -23,7 +24,7 @@ import java.util.List;
  *      Desc         : 封装app内通用的属性
  * </pre>
  */
-public abstract class ComRecyclerAdapter<D, T extends ComHolder<D>> extends RecyclerView.Adapter<T> {
+public abstract class ComRecyclerAdapter<D, VH extends ComHolder<D>> extends RecyclerView.Adapter<VH> {
 
     public Activity mActivity;
     public Fragment mFragment;
@@ -47,11 +48,11 @@ public abstract class ComRecyclerAdapter<D, T extends ComHolder<D>> extends Recy
 
     @NonNull
     @Override
-    public abstract T onCreateViewHolder(@NonNull ViewGroup parent, int viewType);
+    public abstract VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType);
 
     @Override
-    public void onBindViewHolder(@NonNull T holder, int position) {
-        holder.onBindViewHolder(mDatas, position, mDatas.get(position), mRvItemClickListener);
+    public void onBindViewHolder(@NonNull VH holder, int position) {
+        holder.onBindViewHolder(mDatas, mDatas.get(position), position, mRvItemClickListener);
     }
 
     @Override
@@ -80,7 +81,7 @@ public abstract class ComRecyclerAdapter<D, T extends ComHolder<D>> extends Recy
      */
     public void setData(List<D> data) {
         this.mDatas = data;
-        notifyDataSetChanged();
+        notifyItemRangeChanged(0, mDatas.size());
     }
 
     /**

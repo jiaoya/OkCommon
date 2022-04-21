@@ -17,6 +17,8 @@ import static java.util.logging.Level.WARNING;
 import static okhttp3.internal.Util.delimiterOffset;
 import static okhttp3.internal.Util.trimSubstring;
 
+import com.albert.okutils.LogUtils;
+
 /**
  * <pre>
  *      Copyright    : Copyright (c) 2019.
@@ -83,27 +85,31 @@ public class PersistentCookieJar implements CookieJar {
      */
     private List<Cookie> decodeHeaderAsJavaNetCookies(HttpUrl url, String header) {
         List<Cookie> result = new ArrayList<>();
-        for (int pos = 0, limit = header.length(), pairEnd; pos < limit; pos = pairEnd + 1) {
-            pairEnd = delimiterOffset(";,", header, pos, limit);
-            int equalsSign = delimiterOffset("=", header, pos, pairEnd);
-            String name = trimSubstring(header, pos, equalsSign);
-            if (name.startsWith("$")) continue;
+        try {
+            for (int pos = 0, limit = header.length(), pairEnd; pos < limit; pos = pairEnd + 1) {
+                pairEnd = delimiterOffset(";,", header, pos, limit);
+                int equalsSign = delimiterOffset("=", header, pos, pairEnd);
+                String name = trimSubstring(header, pos, equalsSign);
+                if (name.startsWith("$")) continue;
 
-            // We have either name=value or just a name.
-            String value = equalsSign < pairEnd
-                    ? trimSubstring(header, equalsSign + 1, pairEnd)
-                    : "";
+                // We have either name=value or just a name.
+                String value = equalsSign < pairEnd
+                        ? trimSubstring(header, equalsSign + 1, pairEnd)
+                        : "";
 
-            // If the value is "quoted", drop the quotes.
-            if (value.startsWith("\"") && value.endsWith("\"")) {
-                value = value.substring(1, value.length() - 1);
+                // If the value is "quoted", drop the quotes.
+                if (value.startsWith("\"") && value.endsWith("\"")) {
+                    value = value.substring(1, value.length() - 1);
+                }
+
+                result.add(new Cookie.Builder()
+                        .name(name)
+                        .value(value)
+                        .domain(url.host())
+                        .build());
             }
-
-            result.add(new Cookie.Builder()
-                    .name(name)
-                    .value(value)
-                    .domain(url.host())
-                    .build());
+        } catch (Exception e) {
+            LogUtils.e("PersistentCookieJar：", e.getMessage());
         }
         return result;
     }

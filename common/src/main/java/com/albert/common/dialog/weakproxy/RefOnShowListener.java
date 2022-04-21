@@ -2,6 +2,7 @@ package com.albert.common.dialog.weakproxy;
 
 import android.content.DialogInterface;
 
+import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 
 /**
@@ -9,15 +10,15 @@ import java.lang.ref.WeakReference;
  *      Copyright    : Copyright (c) 2020.
  *      Author       : jiaoya.
  *      Created Time : 2020/12/17.
- *      Desc         :
+ *      Desc         : 软引用，防止泄露
  * </pre>
  */
-public class WeakOnShowListener implements DialogInterface.OnShowListener {
+public class RefOnShowListener implements DialogInterface.OnShowListener {
 
-    private WeakReference<DialogInterface.OnShowListener> mRef;
+    private SoftReference<DialogInterface.OnShowListener> mRef;
 
-    public WeakOnShowListener(DialogInterface.OnShowListener real) {
-        this.mRef = new WeakReference<>(real);
+    public RefOnShowListener(DialogInterface.OnShowListener real) {
+        this.mRef = new SoftReference<>(real);
     }
 
     @Override

@@ -36,5 +36,8 @@ public class GsonHelper {
         return instance;
     }
 
+    public static void setInstance(Gson instance) {
+        GsonHelper.instance = instance;
+    }
 
 }

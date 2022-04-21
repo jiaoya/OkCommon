@@ -13,4 +13,28 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--基础dialog-->
+    <style name="BaseDialog" parent="@android:style/Theme.Dialog">
+        <!--边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--无标题-->
+        <item name="android:windowNoTitle">false</item>
+        <!--背景透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--否充许对话框的背景变暗-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--进入退出动画-->
+        <item name="android:windowAnimationStyle">@style/BaseDialogBottomAnim</item>
+        <!--键盘-->
+        <item name="android:windowSoftInputMode">adjustPan|adjustUnspecified</item>
+    </style>
+
+    <style name="BaseDialogBottomAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/base_dialog_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/base_dialog_bottom_out</item>
+    </style>
+
 </resources>

@@ -27,7 +27,7 @@ public abstract class ComDialog extends OkDialog {
     /**
      * /显示的位置
      */
-    private int mGravity = Gravity.BOTTOM;
+    private int mGravity = Gravity.CENTER;
     /**
      * 外部是否透明
      */
@@ -78,7 +78,6 @@ public abstract class ComDialog extends OkDialog {
      *
      * @return LayoutId
      */
-    @Deprecated
     protected int getLayoutResId() {
         return 0;
     }

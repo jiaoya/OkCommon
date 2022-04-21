@@ -27,7 +27,7 @@ public class HttpLogHolder extends ComHolder<HttpLogEnty> implements View.OnClic
     }
 
     @Override
-    public void onBindViewHolder(int position, HttpLogEnty dataBean) {
+    public void onBindViewHolder(HttpLogEnty dataBean, int position) {
         if (dataBean.path != null) {
             vb.tvApiName.setText(dataBean.path);
         }

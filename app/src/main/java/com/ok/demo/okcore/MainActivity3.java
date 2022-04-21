@@ -3,12 +3,15 @@ package com.ok.demo.okcore;
 import android.os.Bundle;
 
 import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.albert.common.activity.ComActivity;
 import com.ok.demo.okcore.databinding.ActivityMain3Binding;
 import com.xiaojinzi.component.anno.RouterAnno;
+
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * <pre>
@@ -18,6 +21,7 @@ import com.xiaojinzi.component.anno.RouterAnno;
  *      Desc         :
  * </pre>
  */
+@RuntimePermissions
 @RouterAnno(hostAndPath = "app/MainActivity3")
 public class MainActivity3 extends ComActivity {
 
@@ -30,6 +34,8 @@ public class MainActivity3 extends ComActivity {
         setContentView(vb.getRoot());
 
         setFfragment(BlankFragment.newInstance(getIntent().getExtras()));
+
+
     }
 
 
@@ -49,5 +55,11 @@ public class MainActivity3 extends ComActivity {
                 // 此处的R.id.fragment_container是要盛放fragment的父容器
                 .add(id, fragment)
                 .commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
     }
 }

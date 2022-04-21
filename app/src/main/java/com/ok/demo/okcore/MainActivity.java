@@ -11,10 +11,13 @@ import com.albert.common.http.HttpRxHelp;
 import com.albert.okutils.LogUtils;
 import com.albert.okutils.OaidUtils;
 import com.ok.demo.okcore.databinding.ActivityMainBinding;
+import com.ok.demo.okcore.dialog.DialgoTest;
 import com.ok.demo.okcore.http.ComApi;
 import com.ok.demo.okcore.http.Result;
 import com.xiaojinzi.component.impl.Router;
 import com.albert.common.activity.ComActivity;
+
+import java.util.Locale;
 
 public class MainActivity extends ComActivity implements View.OnClickListener {
 
@@ -33,7 +36,12 @@ public class MainActivity extends ComActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == vb.tv1) {
-            Router.with(this).url("ylt://app/MainActivity2?name=cxj").forward();
+            //Router.with(this).url("ylt://app/MainActivity2?name=cxj").forward();
+            //new DialgoTest(this).showDialog();
+
+            double d=0xabcd&1314L;
+            LogUtils.e("dsds", String.format(Locale.CHINA,"%.2f%%d",d));
+
         } else if (v == vb.tv2) {
             Router.with(this)
                     .hostAndPath("app/MainActivity3")

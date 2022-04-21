@@ -2,8 +2,9 @@
 buildscript {
 
     ext {
-        kotlin_version = '1.6.0'
-        router_version = 'v1.9.2-androidx-java8'
+        kotlin_version = '1.6.10'
+        router_version = 'v2.0.0-beta7'
+        hilt_version = '2.41'
     }
 
     repositories {
@@ -12,10 +13,11 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.41'
         classpath "com.github.xiaojinzi123.Component:component-plugin:${router_version}"
         //classpath "com.byteace.refercheck:byteace-refercheck:35-SNAPSHOT" // 字节码检查是否有错误引用调用等
 

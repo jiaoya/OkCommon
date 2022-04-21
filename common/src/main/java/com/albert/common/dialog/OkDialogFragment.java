@@ -20,7 +20,7 @@ public class OkDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        return new OkWeakDialog(requireContext(), getTheme());
+        return new OkRefkDialog(requireContext(), getTheme());
     }
 
 }

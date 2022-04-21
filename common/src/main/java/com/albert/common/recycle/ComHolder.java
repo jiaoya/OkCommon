@@ -23,22 +23,39 @@ import java.util.List;
  *      Desc         : 基础holder
  * </pre>
  */
-public class ComHolder<H> extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ComHolder<D> extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public Activity mActivity;
     public Fragment mFragment;
-    public RecycleItemClickListener<H> mRecycleItemClickListener;
-    public H mData;
+    public RecycleItemClickListener<D> mRecycleItemClickListener;
+    public D mData;
     public int mPostion;
 
+    /**
+     * 构造 初始化
+     *
+     * @param viewBinding
+     */
     public ComHolder(ViewBinding viewBinding) {
         this(null, null, viewBinding);
     }
 
+    /**
+     * 构造 初始化
+     *
+     * @param activity
+     * @param viewBinding
+     */
     public ComHolder(Activity activity, ViewBinding viewBinding) {
         this(activity, null, viewBinding);
     }
 
+    /**
+     * 构造 初始化
+     *
+     * @param fragment
+     * @param viewBinding
+     */
     public ComHolder(Fragment fragment, ViewBinding viewBinding) {
         this(null, fragment, viewBinding);
     }
@@ -60,6 +77,11 @@ public class ComHolder<H> extends RecyclerView.ViewHolder implements View.OnClic
         mFragment = fragment;
     }
 
+    /**
+     * 构造 初始化
+     *
+     * @param itemView
+     */
     public ComHolder(@NonNull View itemView) {
         this(null, null, itemView);
     }
@@ -103,8 +125,26 @@ public class ComHolder<H> extends RecyclerView.ViewHolder implements View.OnClic
         mFragment = fragment;
     }
 
-    public void onBindViewHolder(int position, H data) {
-        onBindViewHolder(null, position, data, null);
+
+    /**
+     * 设置绑定ui数据，这里最好不要做ui相关的初始化操作
+     *
+     * @param position
+     * @param data
+     */
+    public void onBindViewHolder(D data, int position) {
+        onBindViewHolder(null, data, position, null);
+    }
+
+    /**
+     * 设置绑定ui数据，这里最好不要做ui相关的初始化操作
+     *
+     * @param data
+     * @param position
+     * @param rvItemClickListener
+     */
+    public void onBindViewHolder(D data, int position, RecycleItemClickListener<D> rvItemClickListener) {
+        onBindViewHolder(null, data, position, rvItemClickListener);
     }
 
     /**
@@ -115,7 +155,7 @@ public class ComHolder<H> extends RecyclerView.ViewHolder implements View.OnClic
      * @param data                当前的数据
      * @param rvItemClickListener item点击回调
      */
-    public void onBindViewHolder(List<H> allDatas, int position, H data, RecycleItemClickListener<H> rvItemClickListener) {
+    public void onBindViewHolder(List<D> allDatas, D data, int position, RecycleItemClickListener<D> rvItemClickListener) {
         mPostion = position;
         mData = data;
         mRecycleItemClickListener = rvItemClickListener;

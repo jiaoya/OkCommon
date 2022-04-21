@@ -97,7 +97,7 @@ public class HttpLogDialog extends ComDialog implements View.OnClickListener {
 
         @Override
         public void onBindViewHolder(@NonNull HttpLogHolder holder, int position) {
-            holder.onBindViewHolder(position, mData.get(position));
+            holder.onBindViewHolder(mData.get(position), position);
         }
 
         @Override

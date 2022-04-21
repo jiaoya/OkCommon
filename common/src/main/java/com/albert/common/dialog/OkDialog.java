@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
  *      Desc         :
  * </pre>
  */
-public class OkDialog extends OkWeakDialog {
+public class OkDialog extends OkRefkDialog {
 
     public OkDialog(@NonNull Context context) {
         super(context);
